@@ -22,10 +22,11 @@ contract subasta {
     error SubastaSinTerminar(uint tiempoRest);
 
     //Al desplegar el contrato se debera de indicar la duracion y el beneficiario
-    constructor(uint duracionSubasta,address payable direccionBenef) {
+    constructor(uint duracionSubasta, uint precioSalida, address payable direccionBenef) {
         benef = direccionBenef;
         tiempoFinalizacion = block.timestamp + duracionSubasta;
         gestor = msg.sender;
+        precioActual = precioSalida;
     }
 
     modifier requiereGestor() {
